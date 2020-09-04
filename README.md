@@ -14,6 +14,17 @@ The repository includes:
 
 * [.travis.yml](.travis.yml) - Travis CI configuration file
 
+
+
+## Clone this Repository
+
+To run the examples on your machine, first clone this repository, then continue to the following sections.
+
+```bash
+git clone https://github.com/SymbiFlow/symbiflow-examples && cd symbiflow-examples
+```
+
+
 ## Toolchain installation
 
 This section describes how to install the toolchain. This procedure is divided in two steps:
@@ -33,11 +44,11 @@ For the Artix-7 devices:
 
 ```bash
 INSTALL_DIR="/opt/symbiflow/xc7"
-bash conda_installer.sh -b -p $INSTALL_DIR/conda && rm conda_installer.sh
+sudo bash conda_installer.sh -b -p $INSTALL_DIR/conda && rm conda_installer.sh
 source "$INSTALL_DIR/conda/etc/profile.d/conda.sh"
 conda env create -f examples/xc7/environment.yml
 conda activate xc7
-wget -qO- https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/presubmit/install/477/20200714-082108/symbiflow-arch-defs-install-8eb88e76.tar.xz | tar -xJ --one-top-level=$INSTALL_DIR/install
+wget -qO- https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/presubmit/install/477/20200714-082108/symbiflow-arch-defs-install-8eb88e76.tar.xz | sudo tar -xJ --one-top-level=$INSTALL_DIR/install
 conda deactivate
 ```
 
@@ -74,7 +85,6 @@ export INSTALL_DIR="/opt/symbiflow/xc7"
 export PATH="$INSTALL_DIR/install/bin:$PATH"
 source "$INSTALL_DIR/conda/etc/profile.d/conda.sh"
 conda activate xc7
-git clone https://github.com/SymbiFlow/symbiflow-examples && cd symbiflow-examples
 # counter example
 pushd examples/xc7/counter_test && TARGET="arty_50" make && popd
 pushd examples/xc7/counter_test && TARGET="arty_100" make && popd
